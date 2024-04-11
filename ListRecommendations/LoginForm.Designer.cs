@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnGoBack = new System.Windows.Forms.Button();
             this.pctrBoxLoginForm = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctrBoxLoginForm)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,20 +43,18 @@
             // 
             this.txtBoxLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxLogin.Location = new System.Drawing.Point(117, 171);
-            this.txtBoxLogin.Multiline = true;
+            this.txtBoxLogin.Location = new System.Drawing.Point(117, 184);
             this.txtBoxLogin.Name = "txtBoxLogin";
-            this.txtBoxLogin.Size = new System.Drawing.Size(233, 40);
+            this.txtBoxLogin.Size = new System.Drawing.Size(233, 22);
             this.txtBoxLogin.TabIndex = 0;
             // 
             // txtBoxPassword
             // 
             this.txtBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(117, 253);
-            this.txtBoxPassword.Multiline = true;
+            this.txtBoxPassword.Location = new System.Drawing.Point(117, 260);
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(233, 40);
+            this.txtBoxPassword.Size = new System.Drawing.Size(233, 22);
             this.txtBoxPassword.TabIndex = 1;
             // 
             // btnLogin
@@ -109,12 +108,24 @@
             this.pctrBoxLoginForm.TabIndex = 3;
             this.pctrBoxLoginForm.TabStop = false;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(207, 299);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(143, 21);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Показать пароль";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(455, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.btnGoBack);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -124,6 +135,7 @@
             this.Controls.Add(this.txtBoxLogin);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctrBoxLoginForm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,5 +151,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnGoBack;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

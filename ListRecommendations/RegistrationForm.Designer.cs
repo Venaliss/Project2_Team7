@@ -37,6 +37,7 @@
             this.txtBoxPassword1 = new System.Windows.Forms.TextBox();
             this.txtBoxPassword2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkPass = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblRegistr
@@ -70,7 +71,7 @@
             // 
             // btnRegistr
             // 
-            this.btnRegistr.Location = new System.Drawing.Point(157, 324);
+            this.btnRegistr.Location = new System.Drawing.Point(157, 357);
             this.btnRegistr.Name = "btnRegistr";
             this.btnRegistr.Size = new System.Drawing.Size(188, 36);
             this.btnRegistr.TabIndex = 3;
@@ -80,7 +81,7 @@
             // 
             // btnGoBack
             // 
-            this.btnGoBack.Location = new System.Drawing.Point(157, 366);
+            this.btnGoBack.Location = new System.Drawing.Point(157, 408);
             this.btnGoBack.Name = "btnGoBack";
             this.btnGoBack.Size = new System.Drawing.Size(188, 36);
             this.btnGoBack.TabIndex = 4;
@@ -92,21 +93,21 @@
             // 
             this.txtBoxLogin.Location = new System.Drawing.Point(157, 175);
             this.txtBoxLogin.Name = "txtBoxLogin";
-            this.txtBoxLogin.Size = new System.Drawing.Size(188, 22);
+            this.txtBoxLogin.Size = new System.Drawing.Size(230, 22);
             this.txtBoxLogin.TabIndex = 5;
             // 
             // txtBoxPassword1
             // 
             this.txtBoxPassword1.Location = new System.Drawing.Point(157, 230);
             this.txtBoxPassword1.Name = "txtBoxPassword1";
-            this.txtBoxPassword1.Size = new System.Drawing.Size(188, 22);
+            this.txtBoxPassword1.Size = new System.Drawing.Size(230, 22);
             this.txtBoxPassword1.TabIndex = 6;
             // 
             // txtBoxPassword2
             // 
             this.txtBoxPassword2.Location = new System.Drawing.Point(157, 280);
             this.txtBoxPassword2.Name = "txtBoxPassword2";
-            this.txtBoxPassword2.Size = new System.Drawing.Size(188, 22);
+            this.txtBoxPassword2.Size = new System.Drawing.Size(230, 22);
             this.txtBoxPassword2.TabIndex = 7;
             // 
             // label1
@@ -118,12 +119,24 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Повторите пароль";
             // 
+            // checkPass
+            // 
+            this.checkPass.AutoSize = true;
+            this.checkPass.Location = new System.Drawing.Point(244, 318);
+            this.checkPass.Name = "checkPass";
+            this.checkPass.Size = new System.Drawing.Size(143, 21);
+            this.checkPass.TabIndex = 9;
+            this.checkPass.Text = "Показать пароль";
+            this.checkPass.UseVisualStyleBackColor = true;
+            this.checkPass.CheckedChanged += new System.EventHandler(this.checkPass_CheckedChanged);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(473, 450);
+            this.ClientSize = new System.Drawing.Size(503, 478);
+            this.Controls.Add(this.checkPass);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBoxPassword2);
             this.Controls.Add(this.txtBoxPassword1);
@@ -135,6 +148,7 @@
             this.Controls.Add(this.lblRegistr);
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
+            this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,5 +165,6 @@
         private System.Windows.Forms.TextBox txtBoxPassword1;
         private System.Windows.Forms.TextBox txtBoxPassword2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkPass;
     }
 }

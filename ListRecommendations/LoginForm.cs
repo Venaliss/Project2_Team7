@@ -56,5 +56,22 @@ namespace ListRecommendations
             Form1 mainForm = new Form1();
             mainForm.Show();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                txtBoxPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtBoxPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            txtBoxPassword.UseSystemPasswordChar = true;
+        }
     }
 }
