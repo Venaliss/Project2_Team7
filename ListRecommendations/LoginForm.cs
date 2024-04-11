@@ -28,15 +28,21 @@ namespace ListRecommendations
             else
             {
                 var query = "SELECT * FROM Пользователь WHERE Логин = @txtBoxLogin AND Пароль = @txtBoxPassword";
+
                 SQLiteConnection sqlConnection = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;Version = 3;");
                 sqlConnection.Open();
+
                 SQLiteCommand sqlCommand = new SQLiteCommand(query, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@txtBoxLogin", txtBoxLogin.Text);
                 sqlCommand.Parameters.AddWithValue("@txtBoxPassword", txtBoxPassword.Text);
+
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
+
                 DataTable dataTable = new DataTable();
+
                 dataAdapter.Fill(dataTable);
-                if(dataTable.Rows.Count > 0)
+
+                if (dataTable.Rows.Count > 0)
                 {
                     MessageBox.Show("Вы успешно авторизованы", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();

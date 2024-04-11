@@ -29,7 +29,9 @@ namespace ListRecommendations
         {
             SQLiteConnection sqlCon = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;");
             SQLiteCommand sqlCom = new SQLiteCommand("INSERT INTO Пользователь (Логин, Пароль) VALUES (@txtBoxLogin, @txtBoxPassword1)", sqlCon);
+
             sqlCon.Open();
+
             var query = @"SELECT * FROM Пользователь WHERE Логин ='" + txtBoxLogin.Text + "'";
             var count = 0;
             sqlCom.CommandText = query;
@@ -41,26 +43,32 @@ namespace ListRecommendations
             }
             reader.Close();
 
-            if (txtBoxPassword1.Text.Equals(txtBoxPassword2.Text) & count == 0 & (!(txtBoxLogin.Text.Trim() == "" && txtBoxPassword1.Text.Trim() == "")))
+            if (txtBoxPassword1.Text.Equals(txtBoxPassword2.Text) & count == 0 & (!(txtBoxLogin.Text.Trim() == "" | txtBoxPassword1.Text.Trim() == "")))
             {
                 SQLiteCommand sqlComm = new SQLiteCommand("INSERT INTO Пользователь (Логин, Пароль) VALUES (@txtBoxLogin, @txtBoxPassword1)", sqlCon);
+
                 sqlComm.Parameters.AddWithValue("@txtBoxLogin", txtBoxLogin.Text);
                 sqlComm.Parameters.AddWithValue("@txtBoxPassword1", txtBoxPassword1.Text);
                 MessageBox.Show("Вы успешно зарегистрированы");
                 this.Close();
+
                 LoginForm lg = new LoginForm();
                 lg.Show();
+
                 sqlComm.ExecuteNonQuery();
             }
+
             else if ((txtBoxPassword1.Text.Equals(txtBoxPassword2.Text)) == false)
             {
                 txtBoxPassword2.Clear();
                 MessageBox.Show("Пароли не совпадают, повторите попытку","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtBoxLogin.Text.Trim() == "" && txtBoxPassword1.Text.Trim() == "")
+
+            else if (txtBoxLogin.Text.Trim() == ""  | txtBoxPassword1.Text.Trim() == "")
             {
                 MessageBox.Show("Введите данные полностью", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             else
             {
                 MessageBox.Show("Логин уже занят", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
