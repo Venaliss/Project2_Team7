@@ -27,6 +27,7 @@ namespace ListRecommendations
             }
             else
             {
+                string hashPass = HashPassword.GetMD5Hash(txtBoxPassword.Text);
                 var query = "SELECT * FROM Пользователь WHERE Логин = @txtBoxLogin AND Пароль = @txtBoxPassword";
 
                 SQLiteConnection sqlConnection = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;Version = 3;");
@@ -34,7 +35,7 @@ namespace ListRecommendations
 
                 SQLiteCommand sqlCommand = new SQLiteCommand(query, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@txtBoxLogin", txtBoxLogin.Text);
-                sqlCommand.Parameters.AddWithValue("@txtBoxPassword", txtBoxPassword.Text);
+                sqlCommand.Parameters.AddWithValue("@txtBoxPassword", hashPass);
 
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
 
