@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using ListRecommendations.Properties;
+using ListRecommendations;
 
 namespace WindowsFormsApp6
 {
@@ -18,20 +20,34 @@ namespace WindowsFormsApp6
             InitializeComponent();
         }
 
+        DataTable dataTable = new DataTable();
         private void button1_Click(object sender, EventArgs e)
         {
-            SQLiteConnection sqlCon = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;");
-            SQLiteCommand sqlCom = new SQLiteCommand("INSERT INTO Избранное (Название, Описание, Оценка) VALUES (@name, @info, @mark)", sqlCon);
+            if (comboBox1.Text == "") 
+            {
+                MessageBox.Show("Поставь оценку от 1 до 5");
+            }
+            else
+            {
+                SQLiteConnection sqlCon = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;");
+                SQLiteCommand sqlCom = new SQLiteCommand("INSERT INTO Избранное (Название, Описание, Оценка) VALUES (@name, @info, @mark)", sqlCon);
 
-            sqlCon.Open();
+                sqlCon.Open();
 
-            Recommendations info = new Recommendations();
-            sqlCom.Parameters.AddWithValue("@name", info.label1.Text);
-            sqlCom.Parameters.AddWithValue("@info", info.textBox1.Text);
-            sqlCom.Parameters.AddWithValue("@mark", comboBox1.SelectedValue);
-            FavouritesForm f = new FavouritesForm();
-            f.Show();
-            this.Close();
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM Маршрут", sqlCon);
+                dataAdapter.Fill(dataTable);
+                var name = dataTable.Rows[Index.index][1].ToString();
+                var infor = dataTable.Rows[Index.index][5].ToString();
+                var mark = comboBox1.Text;
+                sqlCom.Parameters.AddWithValue("@name", name);
+                sqlCom.Parameters.AddWithValue("@info", infor);
+                sqlCom.Parameters.AddWithValue("@mark", mark);
+
+                this.Close();
+
+                sqlCom.ExecuteNonQuery();
+            }
+            
         }
     }
 }

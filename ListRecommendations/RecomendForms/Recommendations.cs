@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
+using ListRecommendations;
 
 namespace WindowsFormsApp6
 {
@@ -19,7 +20,7 @@ namespace WindowsFormsApp6
         {
             InitializeComponent();
         }
-        int index;
+
         private void button1_Click(object sender, EventArgs e)
         {
             MarksForm marksForm = new MarksForm();
@@ -28,7 +29,7 @@ namespace WindowsFormsApp6
 
         private void button2_Click(object sender, EventArgs e)
         {
-            load_Data_Info(index);
+            load_Data_Info(Index.index);
         }
 
         DataTable dataTable = new DataTable();
@@ -81,13 +82,13 @@ namespace WindowsFormsApp6
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            index++;
-            load_Data_Recommendation(index);
+            Index.index++;
+            load_Data_Recommendation(Index.index);
         }
 
         private void Recommendations_Load(object sender, EventArgs e)
         {
-            load_Data_Recommendation(index);
+            load_Data_Recommendation(Index.index);
         }
     }
 }

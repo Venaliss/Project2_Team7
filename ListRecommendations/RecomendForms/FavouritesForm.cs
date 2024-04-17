@@ -24,7 +24,7 @@ namespace WindowsFormsApp6
 
             connection.Open();
 
-            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM Избранное WHERE Название", connection);
+            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM Избранное", connection);
             DataTable dataTable = new DataTable();
 
             dataAdapter.Fill(dataTable);
