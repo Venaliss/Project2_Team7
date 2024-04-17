@@ -29,7 +29,7 @@ namespace ListRecommendations
         private void btnRegistr_Click(object sender, EventArgs e)
         {
             
-            SQLiteConnection sqlCon = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;");
+            SQLiteConnection sqlCon = new SQLiteConnection(@"Data Source=ТуристическийМаршрут.db;");
             SQLiteCommand sqlCom = new SQLiteCommand("INSERT INTO Пользователь (Логин, Пароль) VALUES (@txtBoxLogin, @txtBoxPassword1)", sqlCon);
 
             sqlCon.Open();
