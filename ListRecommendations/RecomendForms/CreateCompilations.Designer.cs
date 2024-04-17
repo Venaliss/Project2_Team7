@@ -42,7 +42,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(272, 32);
+            this.label1.Size = new System.Drawing.Size(273, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Создайте подборку";
             // 
@@ -80,6 +80,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(217, 24);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -90,6 +91,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Создать";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CreateCompilations
             // 
@@ -105,6 +107,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CreateCompilations";
             this.Text = "CreateCompilations";
+            this.Load += new System.EventHandler(this.CreateCompilations_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
