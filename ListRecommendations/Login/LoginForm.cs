@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ListRecommendations.Properties;
 using System.Data.SQLite;
 using WindowsFormsApp6;
 
@@ -19,12 +12,13 @@ namespace ListRecommendations
         {
             InitializeComponent();
         }
-
+        Logs write = new Logs();
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtBoxLogin.Text.Trim() == "" && txtBoxPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Вы оставили пустое поле", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                write.dataLogs += "Warning: Пользователь ввел пустую строку \n";
             }
             else
             {
@@ -50,10 +44,12 @@ namespace ListRecommendations
                     this.Close();
                     RecomendationForm rec = new RecomendationForm();
                     rec.Show();
+                    write.dataLogs += "Debug: Пользователь успешно авторизовался \n";
                 }
                 else
                 {
                     MessageBox.Show("Проверьте правильность введеных данных. Если вы не были авторизованы, рекомендуем зарегистрироваться.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    write.dataLogs += "Warning: Пользователь ввел данные некорректно";
                 }
             }
         }

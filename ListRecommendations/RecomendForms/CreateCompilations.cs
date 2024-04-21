@@ -82,7 +82,7 @@ namespace WindowsFormsApp6
             SQLiteCommand command = new SQLiteCommand("SELECT * FROM Избранное", connection);
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(command);
             dataAdapter.Fill(dataTable);
-            info = dataTable.Rows[Position()][1].ToString();
+            info = dataTable.Rows[comboBox1.SelectedIndex][1].ToString();
         }
     }
 }

@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-using ListRecommendations.Properties;
 
 namespace ListRecommendations
 {
     public partial class RegistrationForm : Form
     {
+        Logs write = new Logs();
         public RegistrationForm()
         {       
             InitializeComponent();
@@ -59,12 +52,15 @@ namespace ListRecommendations
                 lg.Show();
 
                 sqlComm.ExecuteNonQuery();
+                write.dataLogs += "Debug: Пользователь успешно зарегистрировался \n";
+
             }
 
             else if ((txtBoxPassword1.Text.Equals(txtBoxPassword2.Text)) == false)
             {
                 txtBoxPassword2.Clear();
                 MessageBox.Show("Пароли не совпадают, повторите попытку","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                write.dataLogs += "Warning: При регистрации пароли не совпали \n";
             }
 
             else if (txtBoxLogin.Text.Trim() == ""  | txtBoxPassword1.Text.Trim() == "")
@@ -75,6 +71,7 @@ namespace ListRecommendations
             else
             {
                 MessageBox.Show("Логин уже занят", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                write.dataLogs += "Warning: Пользователь ввел уже существующий логин \n";
             }
         }
         

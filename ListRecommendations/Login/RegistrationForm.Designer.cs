@@ -44,7 +44,7 @@
             // 
             this.lblRegistr.AutoSize = true;
             this.lblRegistr.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblRegistr.Location = new System.Drawing.Point(151, 61);
+            this.lblRegistr.Location = new System.Drawing.Point(151, 78);
             this.lblRegistr.Name = "lblRegistr";
             this.lblRegistr.Size = new System.Drawing.Size(194, 32);
             this.lblRegistr.TabIndex = 0;
@@ -53,7 +53,7 @@
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
-            this.lblLogin.Location = new System.Drawing.Point(3, 178);
+            this.lblLogin.Location = new System.Drawing.Point(112, 135);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(47, 17);
             this.lblLogin.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 235);
+            this.label3.Location = new System.Drawing.Point(112, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 17);
             this.label3.TabIndex = 2;
@@ -71,49 +71,51 @@
             // 
             // btnRegistr
             // 
+            this.btnRegistr.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnRegistr.Location = new System.Drawing.Point(157, 357);
             this.btnRegistr.Name = "btnRegistr";
             this.btnRegistr.Size = new System.Drawing.Size(188, 36);
             this.btnRegistr.TabIndex = 3;
             this.btnRegistr.Text = "Зарегистрироваться";
-            this.btnRegistr.UseVisualStyleBackColor = true;
+            this.btnRegistr.UseVisualStyleBackColor = false;
             this.btnRegistr.Click += new System.EventHandler(this.btnRegistr_Click);
             // 
             // btnGoBack
             // 
+            this.btnGoBack.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnGoBack.Location = new System.Drawing.Point(157, 408);
             this.btnGoBack.Name = "btnGoBack";
             this.btnGoBack.Size = new System.Drawing.Size(188, 36);
             this.btnGoBack.TabIndex = 4;
             this.btnGoBack.Text = "Назад";
-            this.btnGoBack.UseVisualStyleBackColor = true;
+            this.btnGoBack.UseVisualStyleBackColor = false;
             this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click);
             // 
             // txtBoxLogin
             // 
-            this.txtBoxLogin.Location = new System.Drawing.Point(157, 175);
+            this.txtBoxLogin.Location = new System.Drawing.Point(115, 155);
             this.txtBoxLogin.Name = "txtBoxLogin";
-            this.txtBoxLogin.Size = new System.Drawing.Size(230, 22);
+            this.txtBoxLogin.Size = new System.Drawing.Size(265, 22);
             this.txtBoxLogin.TabIndex = 5;
             // 
             // txtBoxPassword1
             // 
-            this.txtBoxPassword1.Location = new System.Drawing.Point(157, 230);
+            this.txtBoxPassword1.Location = new System.Drawing.Point(115, 215);
             this.txtBoxPassword1.Name = "txtBoxPassword1";
-            this.txtBoxPassword1.Size = new System.Drawing.Size(230, 22);
+            this.txtBoxPassword1.Size = new System.Drawing.Size(265, 22);
             this.txtBoxPassword1.TabIndex = 6;
             // 
             // txtBoxPassword2
             // 
-            this.txtBoxPassword2.Location = new System.Drawing.Point(157, 280);
+            this.txtBoxPassword2.Location = new System.Drawing.Point(115, 275);
             this.txtBoxPassword2.Name = "txtBoxPassword2";
-            this.txtBoxPassword2.Size = new System.Drawing.Size(230, 22);
+            this.txtBoxPassword2.Size = new System.Drawing.Size(265, 22);
             this.txtBoxPassword2.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 280);
+            this.label1.Location = new System.Drawing.Point(112, 255);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 17);
             this.label1.TabIndex = 8;
@@ -122,7 +124,7 @@
             // checkPass
             // 
             this.checkPass.AutoSize = true;
-            this.checkPass.Location = new System.Drawing.Point(244, 318);
+            this.checkPass.Location = new System.Drawing.Point(237, 303);
             this.checkPass.Name = "checkPass";
             this.checkPass.Size = new System.Drawing.Size(143, 21);
             this.checkPass.TabIndex = 9;
@@ -134,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(503, 478);
             this.Controls.Add(this.checkPass);
             this.Controls.Add(this.label1);

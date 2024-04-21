@@ -83,6 +83,16 @@ namespace ListRecommendations.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MainFormPicture {
+            get {
+                object obj = ResourceManager.GetObject("MainFormPicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Stambul__1_ {
             get {
                 object obj = ResourceManager.GetObject("Stambul (1)", resourceCulture);
