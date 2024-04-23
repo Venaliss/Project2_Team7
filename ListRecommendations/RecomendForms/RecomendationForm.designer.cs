@@ -220,7 +220,6 @@
             this.Controls.Add(this.panelMenu);
             this.Name = "RecomendationForm";
             this.Text = "Recomendation";
-            this.Load += new System.EventHandler(this.RecomendationForm_Load);
             this.panelMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

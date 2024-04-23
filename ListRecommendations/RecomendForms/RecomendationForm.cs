@@ -15,7 +15,6 @@ namespace WindowsFormsApp6
 {
     public partial class RecomendationForm : Form
     {
-        Logs write = new Logs();
         private Form activeForm;
         public RecomendationForm()
         {
@@ -78,11 +77,6 @@ namespace WindowsFormsApp6
             this.Close();
             Form1 form = new Form1();
             form.Show();
-        }
-
-        private void RecomendationForm_Load(object sender, EventArgs e)
-        {
-            File.WriteAllText(write.pathLogs, write.dataLogs);
         }
     }
 }
