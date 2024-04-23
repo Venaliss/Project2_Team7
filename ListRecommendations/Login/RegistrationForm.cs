@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using NLog;
 
 namespace ListRecommendations
 {
     public partial class RegistrationForm : Form
     {
-        Logs write = new Logs();
+        static private Logger logger = LogManager.GetCurrentClassLogger();
         public RegistrationForm()
         {       
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace ListRecommendations
                 lg.Show();
 
                 sqlComm.ExecuteNonQuery();
-                write.dataLogs += "Debug: Пользователь успешно зарегистрировался \n";
+                logger.Debug("Пользователь успешно зарегистрировался");
 
             }
 
@@ -60,7 +61,7 @@ namespace ListRecommendations
             {
                 txtBoxPassword2.Clear();
                 MessageBox.Show("Пароли не совпадают, повторите попытку","Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                write.dataLogs += "Warning: При регистрации пароли не совпали \n";
+                logger.Warn("При регистрации пароли не совпали");
             }
 
             else if (txtBoxLogin.Text.Trim() == ""  | txtBoxPassword1.Text.Trim() == "")
@@ -71,7 +72,7 @@ namespace ListRecommendations
             else
             {
                 MessageBox.Show("Логин уже занят", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                write.dataLogs += "Warning: Пользователь ввел уже существующий логин \n";
+                logger.Warn("Пользователь ввел уже существующий логин");
             }
         }
         

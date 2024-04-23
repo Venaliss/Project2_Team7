@@ -3,22 +3,24 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using WindowsFormsApp6;
+using NLog;
 
 namespace ListRecommendations
 {
     public partial class LoginForm : Form
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public LoginForm()
         {
             InitializeComponent();
         }
-        Logs write = new Logs();
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtBoxLogin.Text.Trim() == "" && txtBoxPassword.Text.Trim() == "")
             {
                 MessageBox.Show("Вы оставили пустое поле", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                write.dataLogs += "Warning: Пользователь ввел пустую строку \n";
+                logger.Warn("Пользователь ввел пустое поле");
             }
             else
             {
@@ -44,12 +46,12 @@ namespace ListRecommendations
                     this.Close();
                     RecomendationForm rec = new RecomendationForm();
                     rec.Show();
-                    write.dataLogs += "Debug: Пользователь успешно авторизовался \n";
+                    logger.Debug("Пользователь успешно авторизовался");
                 }
                 else
                 {
                     MessageBox.Show("Проверьте правильность введеных данных. Если вы не были авторизованы, рекомендуем зарегистрироваться.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    write.dataLogs += "Warning: Пользователь ввел данные некорректно";
+                    logger.Warn("Пользователь ввел данные некорректно");
                 }
             }
         }
