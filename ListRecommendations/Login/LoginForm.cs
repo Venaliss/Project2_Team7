@@ -4,12 +4,18 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using WindowsFormsApp6;
 using NLog;
+using ListRecommendations.Manager;
+using ListRecommendations.Models;
+using System.Linq;
 
 namespace ListRecommendations
 {
     public partial class LoginForm : Form
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
+        UsersManager usManager = new UsersManager();
+        ApplicationDBContext db = new ApplicationDBContext();
+        Users users = new Users();
         public LoginForm()
         {
             InitializeComponent();
@@ -24,28 +30,16 @@ namespace ListRecommendations
             }
             else
             {
+                
                 string hashPass = HashPassword.GetMD5Hash(txtBoxPassword.Text);
-                var query = "SELECT * FROM Пользователь WHERE Логин = @txtBoxLogin AND Пароль = @txtBoxPassword";
+                var rec = db.Users.Where(a => a.login == txtBoxLogin.Text && a.password == hashPass).FirstOrDefault();
 
-                SQLiteConnection sqlConnection = new SQLiteConnection("Data Source=ТуристическийМаршрут.db;Version = 3;");
-                sqlConnection.Open();
-
-                SQLiteCommand sqlCommand = new SQLiteCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@txtBoxLogin", txtBoxLogin.Text);
-                sqlCommand.Parameters.AddWithValue("@txtBoxPassword", hashPass);
-
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(sqlCommand);
-
-                DataTable dataTable = new DataTable();
-
-                dataAdapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count > 0)
+                if (rec != null)
                 {
                     MessageBox.Show("Вы успешно авторизованы", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-                    RecomendationForm rec = new RecomendationForm();
-                    rec.Show();
+                    RecomendationForm recForm = new RecomendationForm();
+                    recForm.Show();
                     logger.Debug("Пользователь успешно авторизовался");
                 }
                 else

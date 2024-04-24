@@ -2,12 +2,18 @@
 using System.Windows.Forms;
 using System.Data.SQLite;
 using NLog;
+using ListRecommendations.Models;
+using ListRecommendations.Manager;
+using System.Linq;
 
 namespace ListRecommendations
 {
     public partial class RegistrationForm : Form
     {
         static private Logger logger = LogManager.GetCurrentClassLogger();
+        UsersManager usManager = new UsersManager();
+        ApplicationDBContext db = new ApplicationDBContext();
+        Users users = new Users();
         public RegistrationForm()
         {       
             InitializeComponent();
@@ -22,37 +28,24 @@ namespace ListRecommendations
 
         private void btnRegistr_Click(object sender, EventArgs e)
         {
-            
-            SQLiteConnection sqlCon = new SQLiteConnection(@"Data Source=ТуристическийМаршрут.db;");
-            SQLiteCommand sqlCom = new SQLiteCommand("INSERT INTO Пользователь (Логин, Пароль) VALUES (@txtBoxLogin, @txtBoxPassword1)", sqlCon);
+            var rec = db.Users.Where(a => a.login == txtBoxLogin.Text).FirstOrDefault();
 
-            sqlCon.Open();
+            if (txtBoxPassword1.Text.Equals(txtBoxPassword2.Text) & rec == null & (!(txtBoxLogin.Text.Trim() == "" | txtBoxPassword1.Text.Trim() == "")))
+            {   
+                string hashPass = HashPassword.GetMD5Hash(txtBoxPassword1.Text);              
+                users.login = txtBoxLogin.Text;
+                users.password = hashPass;
 
-            var query = @"SELECT * FROM Пользователь WHERE Логин ='" + txtBoxLogin.Text + "'";
-            var count = 0;
-            sqlCom.CommandText = query;
+                db.Users.Add(users);
 
-            SQLiteDataReader reader = sqlCom.ExecuteReader();
-            while (reader.Read())
-            {
-                count++;
-            }
-            reader.Close();
+                db.SaveChanges();
 
-            if (txtBoxPassword1.Text.Equals(txtBoxPassword2.Text) & count == 0 & (!(txtBoxLogin.Text.Trim() == "" | txtBoxPassword1.Text.Trim() == "")))
-            {
-                string hashPass = HashPassword.GetMD5Hash(txtBoxPassword1.Text);
-                SQLiteCommand sqlComm = new SQLiteCommand("INSERT INTO Пользователь (Логин, Пароль) VALUES (@txtBoxLogin, @hashPass)", sqlCon);
-
-                sqlComm.Parameters.AddWithValue("@txtBoxLogin", txtBoxLogin.Text);
-                sqlComm.Parameters.AddWithValue("@hashPass", hashPass);
                 MessageBox.Show("Вы успешно зарегистрированы");
                 this.Close();
 
                 LoginForm lg = new LoginForm();
                 lg.Show();
 
-                sqlComm.ExecuteNonQuery();
                 logger.Debug("Пользователь успешно зарегистрировался");
 
             }
