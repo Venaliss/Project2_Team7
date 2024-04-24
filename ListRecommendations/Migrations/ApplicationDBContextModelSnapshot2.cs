@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ListRecommendations.Migrations
 {
-
+    [DbContext(typeof(ApplicationDBContext))]
     partial class ApplicationDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -14,6 +14,26 @@ namespace ListRecommendations.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
+
+            modelBuilder.Entity("ListRecommendations.Models.Favorite", b =>
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("INTEGER");
+
+                b.Property<string>("routeInfo")
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("routeMark")
+                    .HasColumnType("TEXT");
+
+                b.Property<string>("routeName")
+                    .HasColumnType("TEXT");
+
+                b.HasKey("ID");
+
+                b.ToTable("Favorite");
+            });
 
             modelBuilder.Entity("ListRecommendations.Models.Users", b =>
             {
@@ -33,6 +53,5 @@ namespace ListRecommendations.Migrations
             });
 #pragma warning restore 612, 618
         }
-
     }
 }

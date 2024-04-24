@@ -113,6 +113,7 @@
             this.textBox2.Size = new System.Drawing.Size(537, 44);
             this.textBox2.TabIndex = 5;
             this.textBox2.Text = "Sofitel Dubai Jumeirah Beach, Hyatt Regency Dubai - Corniche, Grand Hyatt Dubai ";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label5
             // 

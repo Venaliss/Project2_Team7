@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace ListRecommendations.Models
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDBContextFavorite : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(@"Data Source=DBProject.db");
         }
-        public DbSet<Users> Users { get; set; }
-        
+        public DbSet<Favorite> Favorites { get; set; }
     }
 }

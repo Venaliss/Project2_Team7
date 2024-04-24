@@ -21,5 +21,10 @@ namespace WindowsFormsApp6
         {
             this.Close();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBox2.Text;
+        }
     }
 }
