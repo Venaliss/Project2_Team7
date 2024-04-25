@@ -63,12 +63,12 @@
             // 
             // pctrBoxMain
             // 
-            this.pctrBoxMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctrBoxMain.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pctrBoxMain.Image = global::ListRecommendations.Properties.Resources.MainFormPicture;
-            this.pctrBoxMain.Location = new System.Drawing.Point(12, 40);
+            this.pctrBoxMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pctrBoxMain.Image = global::ListRecommendations.Properties.Resources.Снимок_экрана_2024_04_13_172732;
+            this.pctrBoxMain.Location = new System.Drawing.Point(0, 0);
             this.pctrBoxMain.Name = "pctrBoxMain";
-            this.pctrBoxMain.Size = new System.Drawing.Size(884, 431);
+            this.pctrBoxMain.Size = new System.Drawing.Size(908, 483);
             this.pctrBoxMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctrBoxMain.TabIndex = 6;
             this.pctrBoxMain.TabStop = false;

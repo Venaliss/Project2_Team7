@@ -185,7 +185,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(237, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 29);
+            this.label1.Size = new System.Drawing.Size(249, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Домашняя страница";
             // 
@@ -201,7 +201,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::ListRecommendations.Properties.Resources.Form1_фото;
+            this.pictureBox1.Image = global::ListRecommendations.Properties.Resources.Снимок_экрана_2024_04_13_172732;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(698, 397);

@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ListRecommendations</RootNamespace>
     <AssemblyName>ListRecommendations</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -448,6 +448,8 @@
     <None Include="Resources\Form1 фото.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\Снимок экрана 2024-04-13 172732.png" />
+    <None Include="Resources\Снимок экрана 2024-04-13 1727321.png" />
     <Content Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

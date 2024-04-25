@@ -31,5 +31,32 @@ namespace WindowsFormsApp6
             dataGridView1.DataSource = dataTable;
             connection.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                SQLiteConnection connection = new SQLiteConnection("Data Source = ТуристическийМаршрут.db;Version = 3;");
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand();
+                command.Connection = connection;
+
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    string primaryKeyValue = row.Cells["Название"].Value.ToString();
+
+                    string query = "DELETE FROM Подборка WHERE Название = @primaryKeyValue";
+                    command.Parameters.AddWithValue("@primaryKeyValue", primaryKeyValue);
+                    command.CommandText = query;
+                    command.ExecuteNonQuery();
+
+                    dataGridView1.Rows.Remove(row);
+                }
+
+                connection.Close();
+            }
+
+        }
     }
 }

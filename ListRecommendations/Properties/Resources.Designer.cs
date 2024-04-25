@@ -19,7 +19,7 @@ namespace ListRecommendations.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -126,6 +126,26 @@ namespace ListRecommendations.Properties {
         internal static System.Drawing.Bitmap Иконка_Входа__1_ {
             get {
                 object obj = ResourceManager.GetObject("Иконка_Входа (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Снимок_экрана_2024_04_13_172732 {
+            get {
+                object obj = ResourceManager.GetObject("Снимок экрана 2024-04-13 172732", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Снимок_экрана_2024_04_13_1727321 {
+            get {
+                object obj = ResourceManager.GetObject("Снимок экрана 2024-04-13 1727321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
