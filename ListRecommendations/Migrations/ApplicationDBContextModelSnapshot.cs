@@ -6,9 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ListRecommendations.Migrations
 {
-
     partial class ApplicationDBContextModelSnapshot : ModelSnapshot
     {
-
     }
 }
