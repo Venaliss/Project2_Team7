@@ -44,10 +44,15 @@ namespace WindowsFormsApp6
                 sqlCom.Parameters.AddWithValue("@mark", mark);
 
                 this.Close();
-
                 sqlCom.ExecuteNonQuery();
+                MessageBox.Show("Успешно добавлено в избранное", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
