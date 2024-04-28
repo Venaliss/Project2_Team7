@@ -17,7 +17,6 @@ namespace WindowsFormsApp6
         {
             InitializeComponent();
         }
-
         private void FavouritesForm_Load(object sender, EventArgs e)
         {
             SQLiteConnection connection = new SQLiteConnection("Data Source = ТуристическийМаршрут.db;Version = 3;");
