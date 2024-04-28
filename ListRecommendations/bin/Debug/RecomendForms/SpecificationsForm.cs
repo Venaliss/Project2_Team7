@@ -20,6 +20,7 @@ namespace WindowsFormsApp6
             InitializeComponent();
             load_Data_Money();
             load_Data_Time();
+            load_Data_Season();
         }
 
         private void load_Data_Money()
@@ -91,21 +92,56 @@ namespace WindowsFormsApp6
 
             conn.Close();
         }
+        private void load_Data_Season()
+        {
+            string query_Season = @"
+        SELECT
+            CASE
+                WHEN Сезонность = 'Лето' THEN 'Лето'
+                WHEN Сезонность = 'Весна' THEN 'Весна'
+                WHEN Сезонность = 'Осень' THEN 'Осень'
+                ELSE 'Зима'
+            END AS 'Сезонность',
+            MIN(Сезонность) AS 'MinSeason',
+            MAX(Сезонность) AS 'MaxSeason'
+        FROM Маршрут
+        GROUP BY
+            CASE
+                WHEN Сезонность = 'Лето' THEN 'Лето'
+                WHEN Сезонность = 'Весна' THEN 'Весна'
+                WHEN Сезонность = 'Осень' THEN 'Осень'
+                ELSE 'Зима'
+            END";
+            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query_Season, conn);
+            conn.Open();
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet, "Сезонность");
 
-        private void load_Reccomendation(string duration, string budget)
+            comboBox3.DisplayMember = "Сезонность";
+            comboBox3.ValueMember = "MinSeason";
+            comboBox3.DataSource = dataSet.Tables["Сезонность"];
+
+            comboBox3.SelectedIndexChanged += new EventHandler(comboBox3_SelectedIndexChanged);
+
+            conn.Close();
+        }
+
+        private void load_Reccomendation(string duration, string budget, string season)
         {
             string query = @"
-        SELECT Название, Описание, Продолжительность, Бюджет, Сезонность
-        FROM Маршрут
-        WHERE
-            Продолжительность BETWEEN @minDuration AND @maxDuration AND
-            Бюджет BETWEEN @minBudget AND @maxBudget";
+    SELECT Название, Описание, Продолжительность, Бюджет, Сезонность
+    FROM Маршрут
+    WHERE
+        Продолжительность BETWEEN @minDuration AND @maxDuration AND
+        Бюджет BETWEEN @minBudget AND @maxBudget AND
+        Сезонность = @season";
 
             SQLiteCommand cmd = new SQLiteCommand(query, conn);
             cmd.Parameters.AddWithValue("@minDuration", GetDurationValue(duration, true));
             cmd.Parameters.AddWithValue("@maxDuration", GetDurationValue(duration, false));
             cmd.Parameters.AddWithValue("@minBudget", GetBudgetValue(budget, true));
             cmd.Parameters.AddWithValue("@maxBudget", GetBudgetValue(budget, false));
+            cmd.Parameters.AddWithValue("@season", season);
 
             SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
             DataTable dataTable = new DataTable();
@@ -117,14 +153,23 @@ namespace WindowsFormsApp6
         {
             string duration = comboBox2.Text;
             string budget = comboBox4.Text;
-            load_Reccomendation(duration, budget);
+            string season = comboBox3.Text;
+            load_Reccomendation(duration, budget, season);
         }
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             string duration = comboBox2.Text;
             string budget = comboBox4.Text;
-            load_Reccomendation(duration, budget);
+            string season = comboBox3.Text;
+            load_Reccomendation(duration, budget, season);
+        }
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string duration = comboBox2.Text;
+            string budget = comboBox4.Text;
+            string season = comboBox3.Text;
+            load_Reccomendation(duration, budget, season);
         }
         private int GetDurationValue(string interval, bool isMin)
         {
