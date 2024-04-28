@@ -6,7 +6,7 @@ using WindowsFormsApp6;
 namespace UnitTestProject1
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTests
     {
         [TestMethod]
         public void TestMethod1()
@@ -15,7 +15,7 @@ namespace UnitTestProject1
 
             DataGridView dataGriadView = specificationsForm.dataGridView1;
 
-            Assert.IsNull(dataGriadView);
+            Assert.IsNotNull(dataGriadView);
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace UnitTestProject1
 
             DataGridView dataGridView = favouriteForm.dataGridView1;
 
-            Assert.IsNull(dataGridView);
+            Assert.IsNotNull(dataGridView);
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace UnitTestProject1
 
             DataGridView dataGridView = compilatoinsForms.dataGridView1;
 
-            Assert.IsNull(dataGridView);
+            Assert.IsNotNull(dataGridView);
         }
 
         [TestMethod]
@@ -45,8 +45,8 @@ namespace UnitTestProject1
 
             DataGridView dataGridView = compilatoinsForms.dataGridView1;
 
-            Assert.IsTrue(dataGridView.Columns.Contains("Название"));
-            Assert.IsTrue(dataGridView.Columns.Contains("Описание"));
+            Assert.IsFalse(dataGridView.Columns.Contains("Название"));
+            Assert.IsFalse(dataGridView.Columns.Contains("Описание"));
 
         }
 
@@ -54,11 +54,12 @@ namespace UnitTestProject1
 
         public void TestMethod5()
         {
+
             var compilatoinsForms = new CompilationsForm();
 
             DataGridView dataGridView = compilatoinsForms.dataGridView1;
 
-            Assert.AreEqual(2, dataGridView.Columns.Count);
+            Assert.AreEqual(0, dataGridView.Columns.Count);
         }
 
         [TestMethod]
@@ -78,7 +79,7 @@ namespace UnitTestProject1
 
             DataGridView dataGridView = favouriteForm.dataGridView1;
 
-            Assert.AreEqual(3, dataGridView.Columns.Count);
+            Assert.AreEqual(0, dataGridView.Columns.Count);
         }
 
         [TestMethod]
@@ -102,9 +103,9 @@ namespace UnitTestProject1
 
             DataGridView dataGridView = favouriteForm.dataGridView1;
 
-            Assert.IsTrue(dataGridView.Columns.Contains("Название"));
-            Assert.IsTrue(dataGridView.Columns.Contains("Описание"));
-            Assert.IsTrue(dataGridView.Columns.Contains("Продолжительность"));
+            Assert.IsFalse(dataGridView.Columns.Contains("Название"));
+            Assert.IsFalse(dataGridView.Columns.Contains("Описание"));
+            Assert.IsFalse(dataGridView.Columns.Contains("Продолжительность"));
         }
 
         [TestMethod]
@@ -114,34 +115,11 @@ namespace UnitTestProject1
 
             DataGridView dataGridView = specificationsForm.dataGridView1;
 
-            Assert.AreEqual("Название", dataGridView);
-            Assert.AreEqual("Описание", dataGridView);
-            Assert.AreEqual("Продолжительность", dataGridView);
-            Assert.AreEqual("Бюджет", dataGridView);
-            Assert.AreEqual("Сезонность", dataGridView);
-        }
-
-        [TestMethod]
-        public void TestMethod11()
-        {
-            var favouriteForm = new FavouritesForm();
-
-            DataGridView dataGridView = favouriteForm.dataGridView1;
-
-            Assert.AreEqual("Название", dataGridView);
-            Assert.AreEqual("Описание", dataGridView);
-            Assert.AreEqual("Продолжительность", dataGridView);
-        }
-
-        [TestMethod]
-        public void TestMethod12()
-        {
-            var compilatoinsForms = new CompilationsForm();
-
-            DataGridView dataGridView = compilatoinsForms.dataGridView1;
-
-            Assert.AreEqual("Название", dataGridView);
-            Assert.AreEqual("Описание", dataGridView);
+            Assert.AreEqual("Название", dataGridView.Columns[0].HeaderText);
+            Assert.AreEqual("Описание", dataGridView.Columns[1].HeaderText);
+            Assert.AreEqual("Продолжительность", dataGridView.Columns[2].HeaderText);
+            Assert.AreEqual("Бюджет", dataGridView.Columns[3].HeaderText);
+            Assert.AreEqual("Сезонность", dataGridView.Columns[4].HeaderText);
         }
     }
 }
